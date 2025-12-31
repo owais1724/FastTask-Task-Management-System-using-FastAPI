@@ -1,110 +1,169 @@
 # FastTask-Task-Management-System-using-FastAPI
 
-A simple Task Management REST API built using FastAPI, implementing full CRUD operations (Create, Read, Update, Delete).
-This project is designed for learning REST APIs, FastAPI fundamentals, and Swagger UI.
+A simple yet production-style Task Management REST API built using FastAPI, featuring JWT authentication, role-based access control (Admin & Customer), and CRUD operations.
 
-📌 Features
+🚀 Features
 
-Create, read, update, and delete tasks
+🔐 JWT Authentication
 
-RESTful API design
+👥 Role-based access
 
-Input validation using Pydantic
+Admin → view/manage all tasks
 
-Auto-generated Swagger UI documentation
+Customer → manage only own tasks
 
-Lightweight and easy to understand
+🧾 Task CRUD
+
+Create task
+
+View tasks
+
+View task by ID
+
+Update task
+
+Delete task
+
+📚 Swagger UI support
+
+🧩 Clean modular project structure
+
+⚡ FastAPI + OAuth2 standards
+
+🗂️ Project Structure
+task-management/
+│
+├── main.py          # App entry point
+├── auth.py          # JWT auth & login logic
+├── tasks.py         # Task CRUD routes
+├── models.py        # Pydantic models
+└── README.md
 
 🛠️ Tech Stack
 
-Python 3.8+
+Python 3.9+
 
 FastAPI
 
 Uvicorn
 
+JWT (python-jose)
+
+OAuth2 Password Flow
+
 Pydantic
 
-📂 Project Structure
-task-management-system/
-├── main.py
-└── README.md
-
-▶️ Getting Started
+📦 Installation
 1️⃣ Clone the repository
-git clone https://github.com/your-username/task-management-system.git
-cd task-management-system
+git clone <your-repo-url>
+cd task-management
 
-2️⃣ Install dependencies
-pip install fastapi uvicorn
+2️⃣ Create virtual environment (optional but recommended)
+python -m venv venv
+venv\Scripts\activate   # Windows
 
-3️⃣ Run the application
+3️⃣ Install dependencies
+pip install fastapi uvicorn python-jose
+
+▶️ Running the Application
 uvicorn main:app --reload
 
-4️⃣ Open in browser
 
-API base URL
+Server will start at:
 
-http://localhost:8000
+http://127.0.0.1:8000
 
+📘 API Documentation (Swagger)
 
-Swagger UI
+Open in browser:
 
-http://localhost:8000/docs
+http://127.0.0.1:8000/docs
 
-📡 API Endpoints
+🔑 Authentication
+Login Endpoint
+POST /login
+
+Test Credentials
+Username	Password	Role
+admin	admin123	Admin
+user	user123	Customer
+Login Response
+{
+  "access_token": "<JWT_TOKEN>",
+  "token_type": "bearer",
+  "role": "admin"
+}
+
+🔐 Using JWT Token
+
+Copy access_token
+
+Click Authorize 🔓 in Swagger
+
+Enter:
+
+Bearer <your_token>
+
+📌 API Endpoints
+🔹 Tasks (Customer & Admin)
 Method	Endpoint	Description
-POST	/tasks	Create a new task
-GET	/tasks	Retrieve all tasks
-GET	/tasks/{task_id}	Retrieve a task by ID
-PUT	/tasks/{task_id}	Update an existing task
-DELETE	/tasks/{task_id}	Delete a task
-🧪 Example Request
-Create a Task
+POST	/tasks	Create task
+GET	/tasks	Get own tasks
+GET	/tasks/{id}	Get task by ID
+PUT	/tasks/{id}	Update task
+DELETE	/tasks/{id}	Delete task
+🔹 Admin Only
+Method	Endpoint	Description
+GET	/admin/tasks	View all tasks
+🧠 Access Rules
 
-POST /tasks
+Customers can access only their own tasks
 
-{
-  "title": "Learn FastAPI",
-  "description": "Build REST API",
-  "completed": false
-}
+Admin can access all tasks
+
+Unauthorized access returns 403 Forbidden
+
+Invalid token returns 401 Unauthorized
+
+⚠️ Important Notes
+
+Task IDs must be passed without quotes in URL
+
+/tasks/uuid-value
 
 
-Response
+This version uses in-memory storage
 
-{
-  "id": "c8f9a2a1-5d4c-4d1b-a3e5-123456789abc",
-  "title": "Learn FastAPI",
-  "description": "Build REST API",
-  "completed": false
-}
+Restarting server resets data
 
-⚠️ Notes
+🔮 Future Enhancements
 
-Uses an in-memory data store
+Database integration (MongoDB / PostgreSQL)
 
-Data resets on server restart
+Password hashing (bcrypt)
 
-Intended for learning and prototyping
+Refresh tokens
 
-🚧 Future Enhancements
+User registration
 
-Database integration (SQLite / MongoDB)
+Pagination & filtering
 
-JWT authentication
+Deployment (Docker / AWS)
 
-Pagination and filtering
+🏁 Conclusion
 
-Frontend integration (React)
+This project demonstrates:
 
-👤 Author
+Real-world JWT authentication
 
-Syed Owais Mohiuddin
-📄 License
+Role-based authorization
 
-This project is licensed under the MIT License.
+Clean FastAPI architecture
 
-📄 License
+Interview-ready backend design
 
-This project is licensed under the MIT License.
+👨‍💻 Author
+
+Syed Owais
+AI/ML & Backend Enthusiast
+FastAPI • Python • REST APIs
