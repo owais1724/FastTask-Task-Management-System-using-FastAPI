@@ -31,12 +31,18 @@ Delete task
 ⚡ FastAPI + OAuth2 standards
 
 🗂️ Project Structure
+
 task-management/
+
 │
 ├── main.py          # App entry point
+
 ├── auth.py          # JWT auth & login logic
+
 ├── tasks.py         # Task CRUD routes
+
 ├── models.py        # Pydantic models
+
 └── README.md
 
 🛠️ Tech Stack
@@ -54,6 +60,7 @@ OAuth2 Password Flow
 Pydantic
 
 📦 Installation
+
 1️⃣ Clone the repository
 git clone <your-repo-url>
 cd task-management
@@ -165,5 +172,7 @@ Interview-ready backend design
 👨‍💻 Author
 
 Syed Owais
+
 AI/ML & Backend Enthusiast
+
 FastAPI • Python • REST APIs
